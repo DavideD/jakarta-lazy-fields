@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.hibernate:hibernate-gradle-plugin:5.6.9.Final"
+    }
+}
+
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'org.hibernate.orm'
+
+description = 'Hibernate ORM lazy loading field example'
+
+dependencies {
+    implementation "org.hibernate:hibernate-core:5.6.9.Final"
+    implementation "org.postgresql:postgresql:42.2.23"
+
+    // Hibernate Validator (optional)
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.3.Final'
+    runtimeOnly 'org.glassfish:jakarta.el:3.0.3'
+
+    // JPA metamodel generation for criteria queries (optional)
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen:5.6.9.Final"
+
+    // logging (optional)
+    runtimeOnly "org.apache.logging.log4j:log4j-core:2.17.1"
+
+    // Allow authentication to PostgreSQL using SCRAM:
+    runtimeOnly 'com.ongres.scram:client:2.1'
+}
+
+hibernate {
+    enhance {
+        enableLazyInitialization = true
+        enableDirtyTracking = true
+        enableAssociationManagement = false
+    }
+}
