@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-
 import static jakarta.persistence.Persistence.createEntityManagerFactory;
 import static java.lang.System.out;
 import static java.time.Month.JANUARY;
